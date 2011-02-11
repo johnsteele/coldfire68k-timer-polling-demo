@@ -1,0 +1,64 @@
+# Link map of __start
+
+
+
+# .main_application
+  30020000 00000098 .text   main	(lab1b.o)
+  30020098 00000024 .text   timer_init	(lab1b.o)
+  300200BC 0000001C .text   seven_seg_init	(lab1b.o)
+  300200D8 00000004 .text   _ExitProcess	(C_4i_CF_Runtime.a e68k_startup.o )
+  300200DC 0000006C .text   clear_mem	(C_4i_CF_Runtime.a e68k_startup.o )
+  30020148 00000090 .text   _start	(C_4i_CF_Runtime.a e68k_startup.o )
+  300201D8 00000030 .text   __initialize_hardware	(C_4i_CF_Runtime.a e68k_startup.o )
+  30020208 00000004 .text   __initialize_OS	(C_4i_CF_Runtime.a e68k_startup.o )
+  3002020C 0000005C .text   __lmodu__	(C_4i_CF_Runtime.a e68k_runtime.o )
+  30020268 0000001C .text   __lmod__	(C_4i_CF_Runtime.a e68k_runtime.o )
+  30020284 00000008 .text   simple_block_copy	(C_4i_CF_Runtime.a romcopy.o      )
+  3002028C 00000024 .text   __copy_rom_section	(C_4i_CF_Runtime.a romcopy.o      )
+  300202B0 00000098 .text   __copy_rom_sections_to_ram	(C_4i_CF_Runtime.a romcopy.o      )
+  30020348 00000028 .text   __destroy_global_chain	(C_4i_CF_Runtime.a e68k_staticinit)
+  30020370 00000058 .text   exit	(C_4i_CF_MSL.a abort_exit.o   )
+  300203C8 00000048 .text   __exit	(C_4i_CF_MSL.a abort_exit.o   )
+  30020410 00000010 .rodata @4	(lab1b.o)
+
+# .main_application_data
+#>30020420          __exception_table_start__ (linker command file)
+# Exception index
+  30020420 0000000C         Exception Table Index	()
+#>3002042C          __exception_table_end__ (linker command file)
+#>3002042C          ___sinit__ (linker command file)
+# Linker generated symbols
+  3002042C 00000004         static initializer	(linker generated)
+#>30020430          __START_DATA (linker command file)
+#>30020430          __END_DATA (linker command file)
+#>30020430          __START_SDATA (linker command file)
+#>30020430          __END_SDATA (linker command file)
+#>30020430          __SDA_BASE (linker command file)
+#>30020430          __START_SBSS (linker command file)
+#>30020430          __END_SBSS (linker command file)
+#>30020430          __START_BSS (linker command file)
+  30020430 00000004 .bss    pTCN1	(lab1b.o)
+  30020434 00000004 .bss    pTMR1	(lab1b.o)
+  30020438 00000004 .bss    pTRR1	(lab1b.o)
+  3002043C 00000004 .bss    pDisplay	(lab1b.o)
+  30020440 00000004 .bss    __global_destructor_chain	(C_4i_CF_Runtime.a e68k_staticinit)
+  30020444 00000004 .bss    __aborting	(C_4i_CF_MSL.a abort_exit.o   )
+  30020448 00000004 .bss    atexit_curr_func	(C_4i_CF_MSL.a abort_exit.o   )
+  3002044C 00000004 .bss    __atexit_curr_func	(C_4i_CF_MSL.a abort_exit.o   )
+  30020450 00000004 .bss    __stdio_exit	(C_4i_CF_MSL.a abort_exit.o   )
+  30020454 00000004 .bss    __console_exit	(C_4i_CF_MSL.a abort_exit.o   )
+  30020458 00000100 .bss    __atexit_funcs	(C_4i_CF_MSL.a abort_exit.o   )
+  30020558 00000100 .bss    atexit_funcs	(C_4i_CF_MSL.a abort_exit.o   )
+#>30020658          __END_BSS (linker command file)
+#>30024658          __SP_INIT (linker command file)
+#>30024658          ___heap_addr (linker command file)
+#>00050000          ___heap_size (linker command file)
+#>00000000          __S_romp (linker command file)
+
+
+# Memory map:
+  30020000 00000420 TEXT
+  30020420 00000238 DATA
+
+# Link start time: Sun Jan 16 17:30:46 2011
+# Link end time: Sun Jan 16 17:30:46 2011

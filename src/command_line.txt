@@ -1,0 +1,4 @@
+mwcce68k -intsize 4 -model far -srec -map –proc MCF5206e –o lab1b lab1b.c 5206eLite.lcf --Gives usage error for proc
+
+Lab 1 Command Line:
+mwcce68k -proc MCF5026e -intsize 4 -model far -srec -map -o lab1b lab1b.c ads_68K_mw.lcf

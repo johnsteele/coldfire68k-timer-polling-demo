@@ -1,0 +1,70 @@
+# This text file is used by the linker to create a loadable memory image of your program. 
+
+# Sample Linker Command File for Metrowerks Embedded 68K/ColdFire
+
+#  NOTE: The debugger uses the Illegal Instruction Vector to stop.
+#  A small subroutine is written at the location VBR+0x408-VBR+0x40B
+#  to handle the exception.  The Illegal Instruction Vector in
+#  the the vector table at VBR+0x10 is then pointed to it.  When the
+#  debugger encounters an illegal instruction, it jumps to this 
+#  subroutine, which ends with an RTE, then exits.
+#  Do not overwrite this area of memory otherwise the debugger may not 
+#  exit properly.
+# Replaced with that in MEMORY { ..TEXT (RX) : ORIGIN = 0x00000500, LENGTH = 0x0 #FSRAM at 0x0
+
+MEMORY {
+	
+	TEXT (RX) : ORIGIN = 0x30020000, LENGTH = 0x0	
+	DATA (RW) : ORIGIN = AFTER(TEXT), LENGTH = 0x0
+}
+
+SECTIONS {
+	.main_application :
+	{
+		*(.text)
+		.= ALIGN(0x4);
+		*(.rodata)		
+	} > TEXT
+
+    .main_application_data : 
+	{
+		. = ALIGN(0x4);
+		*(.exception)
+		. = ALIGN(0x4);
+		__exception_table_start__ = .;
+		EXCEPTION
+		__exception_table_end__ = .;
+		
+		___sinit__ = .;
+	    STATICINIT
+
+		__START_DATA = .;
+		*(.data)
+		__END_DATA = .;
+
+		__START_SDATA = .;
+		*(.sdata)
+		__END_SDATA = .;
+		
+		__SDA_BASE = .;				# A5 set to  middle of data and bss ...
+
+		__START_SBSS = .;
+		*(.sbss)
+		*(SCOMMON)
+		__END_SBSS = .;
+
+		__START_BSS = .;
+		*(.bss)
+		*(COMMON)
+		__END_BSS = .;	
+
+		. = ALIGN(0x4);
+	} > DATA
+
+	__SP_INIT = . + 0x00004000;		# set stack to 0x4000 bytes (16KB)
+	
+	___heap_addr = __SP_INIT;		# heap grows in opposite direction of stack
+	___heap_size = 0x50000;			# heap size set to 0x50000 bytes (500KB)
+
+	__S_romp = 0x0;					# no ROM in this example
+}
